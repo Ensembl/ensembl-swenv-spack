@@ -88,6 +88,8 @@ class Mysql(CMakePackage):
 
     # Each version of MySQL requires a specific version of boost
     # See BOOST_PACKAGE_NAME in cmake/boost.cmake
+    # 8.0.33
+    depends_on("boost@1.77.0 cxxstd=17", type="build", when="@8.0.33 cxxstd=17")
     # 8.0.29
     depends_on("boost@1.77.0 cxxstd=17", type="build", when="@8.0.29:8.0.33 cxxstd=17")
     # 8.0.19
@@ -192,6 +194,3 @@ class Mysql(CMakePackage):
                 env.append_flags("CXXFLAGS", "-Wno-deprecated-declarations")
             if int(cxxstd) > 14:
                 env.append_flags("CXXFLAGS", "-Wno-error=register")
-
-        if "python" in self.spec.flat_dependencies() and self.spec.satisfies("@:7"):
-            self._fix_dtrace_shebang(env)

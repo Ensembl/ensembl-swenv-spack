@@ -17,3 +17,4 @@ class PyClickDidyoumean(PythonPackage):
     depends_on("python@3.0:", type=("build", "run"))
     depends_on("py-click", type=("build", "run"))
     depends_on("py-setuptools", type="build")
+    depends_on("py-poetry-core", type="build")
