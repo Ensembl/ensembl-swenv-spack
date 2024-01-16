@@ -11,11 +11,12 @@ class Kent(MakefilePackage):
 
     homepage = "https://github.com/ucscGenomeBrowser/kent"
     url = "https://github.com/ucscGenomeBrowser/kent/archive/refs/tags/v415_branch.1.tar.gz"
-    license = 'This package mainly includes the MIT licensed parts of the Kent distribution. Parts may be under a non-commercial use licens by Kent Informatics. See original LICENSE file for details.'
+    license = 'This package mainly includes the MIT licensed parts of the Kent distribution. Parts may be under a non-commercial use license by Kent Informatics. See original LICENSE file for details.'
     maintainers = ["EbiArnie"]
 
     version("415.1", sha256="85cea727a76b3c37ec22760e5bf17dc84e3794a5e3c1f55039aa4e684ecf9419")
-    version("335.1", sha256="a661b6004b83e9a70bd1d17cd1c8599e5c6892f25868c797a5ac20f45c7a28c6")
+    version("336.1", sha256="793ffc651e81ada07505f34de8679de24788c4366fb00701748d9702c1c4b39b")
+    #version("335.1", sha256="a661b6004b83e9a70bd1d17cd1c8599e5c6892f25868c797a5ac20f45c7a28c6")
 
     # The docs say it needs gcc to build.
     requires("%gcc")
@@ -29,17 +30,16 @@ class Kent(MakefilePackage):
     depends_on("rsync")
     depends_on("zlib+pic")
 
-    # TODO - upstream htslib does not work, we need the "ucsc" htslib which
-    # includes a specific member field in one of the structs
-    #depends_on("ucsc_htslib", when="@335.1")
-
     cflags = ["-fPIC", "-z muldefs"]
 
     def url_for_version(self, version):
         url = "https://github.com/ucscGenomeBrowser/kent/archive/refs/tags/v{0}_branch.{1}.tar.gz"
         return url.format(version[0], version[1])
 
+    @when("@:337.1")
     def edit(self, spec, prefix):
+        env['SSLDIR'] = format(spec["openssl"].prefix.include)
+        env['SSL_DIR'] = format(spec["openssl"].prefix)
         env['PREFIX'] = prefix
         env["DESTDIR"] = prefix
         env["BINDIR"] = '/bin'
@@ -49,13 +49,34 @@ class Kent(MakefilePackage):
         env["USE_SSL"] = '1'
         makefile = FileFilter("src/inc/common.mk")
         makefile.filter("ICONVLIB=.*", "ICONVLIB={0}".format(spec["libiconv"].libs.ld_flags))
+        jksql = FileFilter("src/hg/lib/jksql.c")
+        jksql.filter("my_bool", "bool")
+        jksql.filter("MYSQL_OPT_SSL_VERIFY_SERVER_CERT", "CLIENT_SSL_VERIFY_SERVER_CERT")
 
-    # Version 335.1
-    @when("@335.1")
+
+    @when("@415.1:")
+    def edit(self, spec, prefix):
+        env['SSLDIR'] = format(spec["openssl"].prefix.include)
+        env['SSL_DIR'] = format(spec["openssl"].prefix)
+        env['PREFIX'] = prefix
+        env["DESTDIR"] = prefix
+        env["BINDIR"] = '/bin'
+        env["SCRIPTS"] = prefix + '/bin'
+        env["CFLAGS"] = " ".join(self.cflags)
+        env["MACHTYPE"] = str(spec.target.family)
+        env["USE_SSL"] = '1'
+        makefile = FileFilter("src/inc/common.mk")
+        makefile.filter("ICONVLIB=.*", "ICONVLIB={0}".format(spec["libiconv"].libs.ld_flags))
+        jksql = FileFilter("src/hg/lib/jksql.c")
+        jksql.filter("my_bool", "bool")
+        jksql.filter("MYSQL_OPT_SSL_VERIFY_SERVER_CERT", "CLIENT_SSL_VERIFY_SERVER_CERT")
+
+    # Version 33x.1
+    @when("@:337.1")
     def build(self, spec, prefix):
-        env["HTSDIR"] = spec["htslib"].home + '/lib'
         env['USE_HTS'] = '1'
         mkdirp(prefix.bin)
+        make("-C", "src/lib")
         make("-C", "src/lib")
         make("-C", "src/hg/lib")
         env["DESTDIR"] = ''
