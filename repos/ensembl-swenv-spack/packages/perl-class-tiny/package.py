@@ -1,5 +1,6 @@
 # Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
+# Copyright 2023 EMBL-European Bioinformatics Institute
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
@@ -17,12 +18,3 @@ class PerlClassTiny(PerlPackage):
     version("1.008", sha256="ee058a63912fa1fcb9a72498f56ca421a2056dc7f9f4b67837446d6421815615")
 
     depends_on("perl@5.6.0:", type=("build", "link", "run", "test"))
-
-    # FIXME: Add all non-perl dependencies and cross-check with the actual
-    # package build mechanism (e.g. Makefile.PL)
-
-    def configure_args(self):
-        # FIXME: Add non-standard arguments
-        # FIXME: If not needed delete this function
-        args = []
-        return args
