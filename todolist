@@ -1,0 +1,180 @@
+Merged:
+M tnftp
+M perl-test-file
+M kyotocabinet
+M perl-class-tiny
+M perl-test-nowarnings
+M perl-test-weaken
+M perl-test-without-module
+M perl-type-tiny
+M perl-ipc-run3
+M perl-mro-compat
+M perl-config-tiny
+M perl-clone-pp
+M perl-devel-checklib
+M perl-class-singleton
+M perl-namespace-autoclean
+M perl-b-cow
+M perl-file-sharedir
+M perl-throwable
+M perl-scope-guard
+M perl-test-sharedfork
+M perl-safe-isa
+M perl-proc-processtable
+M perl-net-ip
+M perl-any-uri-escape
+M perl-term-table
+M perl-test-pod
+M perl-spiffy
+M perl-ipc-system-simple
+M perl-params-validationcompiler
+M perl-mime-types
+M perl-convert-nls-date-format
+M perl-module-pluggable
+M perl-email-date-format
+M perl-heap
+M perl-log-any
+M perl-http-cookiejar
+M perl-cpanel-json-xs
+M perl-mock-config
+M perl-ref-util
+M perl-specio
+M perl-test-file-sharedir
+M perl-proc-daemon
+M perl-test2-suite
+M perl-test-base
+M perl-datetime
+M perl-datetime-format-strptime
+M perl-datetime-locale
+M perl-datetime-timezone
+M perl-common-sense
+M perl-time-clock
+M perl-text-parsewords
+M perl-template-toolkit
+M perl-sql-reservedwords
+M perl-email-simple
+M perl-email-mime-contenttype
+M perl-email-mime-encodings
+M perl-email-messageid
+M perl-test2-plugin-nowarnings
+M perl-json-maybexs
+M perl-set-object
+M perl-moox-types-mooselike
+M perl-perlio-gzip
+M perl-tie-leveldb
+M perl-rose-object
+M perl-compress-lzo
+M perl-dbd-oracle
+M perl-bio-db-hts
+M perl-bioperl
+M perl-rose-datetime - rose object
+M Text::Glob - it's there. Add to env.
+M tmhmm
+M unison
+M lastz - upstream works
+M minimap2
+M mmseqs2 - upstream works
+M perl-datetime-format-builder
+M perl-email-abstract
+M perl-metacpan-client
+M perl-email-mime-contenttype
+M perl-log-any-adapter-callback
+M perl-datetime-format-mysql
+M perl-datetime-format-oracle
+M perl-datetime-format-pg
+M perl-alien-build-plugin-download-gitlab
+M perl-class-accessor
+M perl-email-address-xs
+M perl-date-exception
+M perl-date-utils
+M Class::Accessor::Lvalue
+M Term::ANSIColor::Markup
+M perl-test-yaml
+
+Pending:
+P perl-search-elasticsearch
+P perl-rose-db-datetime
+P perl-rose-db
+P perl-rose-db-object
+P perl-kyotocabinet
+P perl-email-mime
+P perl-email-sender
+
+perl-email-stuffer - perl email mime
+
+perl-xml-sax-expat - What to do with parser install step?
+perl-dbd-mysql - todo; link to the right things
+
+X py-apache-libcloud
+X py-apispec
+py-argschema - later
+X py-asgiref
+
+py-bcbio-gff
+py-cactus
+py-celery
+py-charset-normalizer
+py-cigar
+py-click-didyoumean
+py-commonmark
+py-configparser
+py-dateutils
+py-django
+py-django-rest-swagger
+py-djangorestframework
+py-dnspython
+py-dominate
+py-drf-nested-routers
+py-elasticsearch
+py-ete3
+py-exceptiongroup
+py-fastapi
+py-gffpandas
+py-gffutils
+py-httptools
+py-importlib-metadata
+py-importlib-resources
+py-interlap
+py-isort
+py-liftoff
+py-liftofftools
+py-markupsafe
+py-marshmallow
+py-mistune
+py-mock
+py-mysql-connector-python
+py-netifaces
+py-nltk
+py-packaging
+py-pbr
+py-prompt-toolkit
+py-pybedtools
+py-pyfaidx
+py-pyjwt
+py-pymongo
+py-pymysql
+py-pyparsing
+py-pytest
+py-python-daemon
+py-pyzmq
+py-recommonmark
+py-regex
+py-ruamel-yaml
+py-simplejson
+py-sphinx
+py-starlette
+py-toil
+py-tornado
+py-typer
+py-uvicorn
+py-uvloop
+py-websockets
+py-werkzeug
+py-zipp
+
+# Py Spack script
+- correct version extraction, translation to spack
+- find out if test/build/run dependency  
+- license extraction
+
+# sync the upstreamed packages and what I have in ensembl-swenv-spack
