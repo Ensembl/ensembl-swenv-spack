@@ -1,42 +1,27 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
-
-# ----------------------------------------------------------------------------
-# If you submit this package back to Spack as a pull request,
-# please first remove this boilerplate and all FIXME comments.
-#
-# This is a template package file for Spack.  We've put "FIXME"
-# next to all the things you'll want to change. Once you've handled
-# them, you can save this file and test your package like this:
-#
-#     spack install perl-mock-config
-#
-# You can edit this file again by typing:
-#
-#     spack edit perl-mock-config
-#
-# See the Spack documentation for more information on packaging.
-# ----------------------------------------------------------------------------
 
 from spack.package import *
 
 
 class PerlMockConfig(PerlPackage):
-    """FIXME: Put a proper description of your package here."""
+    """Temporarily set Config or XSConfig values"""
 
-    # FIXME: Add a proper url for your package's homepage here.
-    homepage = "https://www.example.com"
+    homepage = "https://metacpan.org/pod/Mock::Config"
     url = "https://cpan.metacpan.org/authors/id/R/RU/RURBAN/Mock-Config-0.03.tar.gz"
 
-    # FIXME: Add a list of GitHub accounts to
-    # notify when the package is updated.
-    # maintainers("github_user1", "github_user2")
+    maintainers("EbiArnie")
 
     version("0.03", sha256="a5b8345757ca4f2b9335f5be14e93ebbb502865233a755bf53bc7156deec001b")
 
-    # FIXME: Add dependencies if required:
-    depends_on("perl-extutils-makemaker", type=("build"))
-    depends_on("perl-test-more", type=("test"))
+    depends_on("perl@5.6.0:", type=("build", "link", "run", "test"))
 
+    def test_use(self):
+        """Test 'use module'"""
+        options = ["-we", 'use strict; use Mock::Config; print("OK\n")']
+
+        perl = self.spec["perl"].command
+        out = perl(*options, output=str.split, error=str.split)
+        assert "OK" in out

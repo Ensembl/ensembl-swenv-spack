@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -14,8 +14,17 @@ class PerlEmailMimeContenttype(PerlPackage):
 
     maintainers("EbiArnie")
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
+
     version("1.028", sha256="e7950246433f7ed6c3e4fd4df2227e0f2341137c3cab1989018fc370f58145c4")
 
     depends_on("perl@5.12.0:", type=("build", "link", "run", "test"))
-    depends_on("perl-text-unidecode", type=("run"))
+    depends_on("perl-text-unidecode", type=("build", "run", "test"))
 
+    def test_use(self):
+        """Test 'use module'"""
+        options = ["-we", 'use strict; use Email::MIME::ContentType; print("OK\n")']
+
+        perl = self.spec["perl"].command
+        out = perl(*options, output=str.split, error=str.split)
+        assert "OK" in out

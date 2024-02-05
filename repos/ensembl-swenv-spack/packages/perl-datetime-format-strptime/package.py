@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -14,22 +14,23 @@ class PerlDatetimeFormatStrptime(PerlPackage):
 
     maintainers("EbiArnie")
 
+    license("Artistic-2.0")
+
     version("1.79", sha256="701e46802c86ed4d88695c1a6dacbbe90b3390beeb794f387e7c792300037579")
 
-    depends_on("perl-datetime@1.00:", type=("run"))
-    depends_on("perl-datetime-locale@1.30:", type=("run"))
-    depends_on("perl-datetime-timezone@2.09:", type=("run"))
-    depends_on("perl-params-validationcompiler", type=("run"))
-    depends_on("perl-specio@0.33:", type=("run"))
-    depends_on("perl-test-fatal", type=("test"))
-    depends_on("perl-test-warnings", type=("test"))
-    depends_on("perl-try-tiny", type=("run"))
+    depends_on("perl-datetime@1.00:", type=("build", "run", "test"))
+    depends_on("perl-datetime-locale@1.30:", type=("build", "run", "test"))
+    depends_on("perl-datetime-timezone@2.09:", type=("build", "run", "test"))
+    depends_on("perl-params-validationcompiler", type=("build", "run", "test"))
+    depends_on("perl-specio@0.33:", type=("build", "run", "test"))
+    depends_on("perl-test-fatal", type=("build", "test"))
+    depends_on("perl-test-warnings", type=("build", "test"))
+    depends_on("perl-try-tiny", type=("build", "run", "test"))
 
-    # FIXME: Add all non-perl dependencies and cross-check with the actual
-    # package build mechanism (e.g. Makefile.PL)
+    def test_use(self):
+        """Test 'use module'"""
+        options = ["-we", 'use strict; use DateTime::Format::Strptime; print("OK\n")']
 
-    def configure_args(self):
-        # FIXME: Add non-standard arguments
-        # FIXME: If not needed delete this function
-        args = []
-        return args
+        perl = self.spec["perl"].command
+        out = perl(*options, output=str.split, error=str.split)
+        assert "OK" in out

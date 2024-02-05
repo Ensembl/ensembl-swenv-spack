@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -14,26 +14,27 @@ class PerlRoseDb(PerlPackage):
 
     maintainers("EbiArnie")
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
+
     version("0.785", sha256="7849307d748d9672b42ef3cd78f83d44dec034cdc94f4d4251d2761e27c67a3c")
 
     depends_on("perl@5.6.0:", type=("build", "link", "run", "test"))
-    depends_on("perl-bit-vector", type=("run"))
-    depends_on("perl-clone-pp", type=("run"))
-    depends_on("perl-datetime", type=("run"))
-    depends_on("perl-datetime-format-mysql", type=("run"))
-    depends_on("perl-datetime-format-oracle", type=("run"))
-    depends_on("perl-datetime-format-pg@0.11:", type=("run"))
-    depends_on("perl-dbi", type=("run"))
-    depends_on("perl-rose-datetime", type=("run"))
-    depends_on("perl-rose-object@0.854:", type=("run"))
-    depends_on("perl-sql-reservedwords", type=("run"))
-    depends_on("perl-time-clock", type=("run"))
+    depends_on("perl-bit-vector", type=("build", "run", "test"))
+    depends_on("perl-clone-pp", type=("build", "run", "test"))
+    depends_on("perl-datetime", type=("build", "run", "test"))
+    depends_on("perl-datetime-format-mysql", type=("build", "run", "test"))
+    depends_on("perl-datetime-format-oracle", type=("build", "run", "test"))
+    depends_on("perl-datetime-format-pg@0.11:", type=("build", "run", "test"))
+    depends_on("perl-dbi", type=("build", "run", "test"))
+    depends_on("perl-rose-datetime", type=("build", "run", "test"))
+    depends_on("perl-rose-object@0.854:", type=("build", "run", "test"))
+    depends_on("perl-sql-reservedwords", type=("build", "run", "test"))
+    depends_on("perl-time-clock", type=("build", "run", "test"))
 
-    # FIXME: Add all non-perl dependencies and cross-check with the actual
-    # package build mechanism (e.g. Makefile.PL)
+    def test_use(self):
+        """Test 'use module'"""
+        options = ["-we", 'use strict; use Rose::DB; print("OK\n")']
 
-    def configure_args(self):
-        # FIXME: Add non-standard arguments
-        # FIXME: If not needed delete this function
-        args = []
-        return args
+        perl = self.spec["perl"].command
+        out = perl(*options, output=str.split, error=str.split)
+        assert "OK" in out

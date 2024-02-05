@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -14,16 +14,17 @@ class PerlTest2PluginNowarnings(PerlPackage):
 
     maintainers("EbiArnie")
 
+    license("Artistic-2.0")
+
     version("0.09", sha256="be3dd800042eef362bf17d2056cf9e934dee91ccce98e4f178b8fb5772f2fb74")
 
-    depends_on("perl-ipc-run3", type=("test"))
-    depends_on("perl-test2-suite", type=("test"))
+    depends_on("perl-ipc-run3", type=("build", "test"))
+    depends_on("perl-test2-suite", type=("build", "test"))
 
-    # FIXME: Add all non-perl dependencies and cross-check with the actual
-    # package build mechanism (e.g. Makefile.PL)
+    def test_use(self):
+        """Test 'use module'"""
+        options = ["-we", 'use strict; use Test2::Plugin::NoWarnings; print("OK\n")']
 
-    def configure_args(self):
-        # FIXME: Add non-standard arguments
-        # FIXME: If not needed delete this function
-        args = []
-        return args
+        perl = self.spec["perl"].command
+        out = perl(*options, output=str.split, error=str.split)
+        assert "OK" in out

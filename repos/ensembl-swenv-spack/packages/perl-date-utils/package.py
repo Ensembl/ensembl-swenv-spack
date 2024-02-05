@@ -1,46 +1,33 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
-
-# ----------------------------------------------------------------------------
-# If you submit this package back to Spack as a pull request,
-# please first remove this boilerplate and all FIXME comments.
-#
-# This is a template package file for Spack.  We've put "FIXME"
-# next to all the things you'll want to change. Once you've handled
-# them, you can save this file and test your package like this:
-#
-#     spack install perl-date-utils
-#
-# You can edit this file again by typing:
-#
-#     spack edit perl-date-utils
-#
-# See the Spack documentation for more information on packaging.
-# ----------------------------------------------------------------------------
 
 from spack.package import *
 
 
 class PerlDateUtils(PerlPackage):
-    """FIXME: Put a proper description of your package here."""
+    """Common date functions as Moo Role."""
 
-    # FIXME: Add a proper url for your package's homepage here.
-    homepage = "https://www.example.com"
+    homepage = "https://metacpan.org/pod/Date::Utils"
     url = "https://cpan.metacpan.org/authors/id/M/MA/MANWAR/Date-Utils-0.28.tar.gz"
 
-    # FIXME: Add a list of GitHub accounts to
-    # notify when the package is updated.
-    # maintainers("github_user1", "github_user2")
+    maintainers("EbiArnie")
+
+    license("Artistic-2.0")
 
     version("0.28", sha256="1ed50713512498e88a54bc7dcf70372763b63196ecf7d9a54668e535d22f03ad")
 
-    # FIXME: Add dependencies if required:
-    # depends_on("perl-foo", type=("build", "run"))
+    depends_on("perl@5.6.0:", type=("build", "link", "run", "test"))
+    depends_on("perl-date-exception@0.08:", type=("build", "run", "test"))
+    depends_on("perl-moo", type=("build", "run", "test"))
+    depends_on("perl-namespace-autoclean@0.28:", type=("build", "run", "test"))
+    depends_on("perl-term-ansicolor-markup@0.06:", type=("build", "run", "test"))
 
-    def configure_args(self):
-        # FIXME: Add non-standard arguments
-        # FIXME: If not needed delete this function
-        args = []
-        return args
+    def test_use(self):
+        """Test 'use module'"""
+        options = ["-we", 'use strict; use Date::Utils; print("OK\n")']
+
+        perl = self.spec["perl"].command
+        out = perl(*options, output=str.split, error=str.split)
+        assert "OK" in out

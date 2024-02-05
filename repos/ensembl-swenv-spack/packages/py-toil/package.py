@@ -3,41 +3,63 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+# ----------------------------------------------------------------------------
+# If you submit this package back to Spack as a pull request,
+# please first remove this boilerplate and all FIXME comments.
+#
+# This is a template package file for Spack.  We've put "FIXME"
+# next to all the things you'll want to change. Once you've handled
+# them, you can save this file and test your package like this:
+#
+#     spack install py-toil
+#
+# You can edit this file again by typing:
+#
+#     spack edit py-toil
+#
+# See the Spack documentation for more information on packaging.
+# ----------------------------------------------------------------------------
 
 from spack.package import *
 
 
 class PyToil(PythonPackage):
-    """Pipeline management software for clusters."""
+    """FIXME: Put a proper description of your package here."""
 
-    homepage = "https://github.com/DataBiosphere/toil"
+    # FIXME: Add a proper url for your package's homepage here.
+    homepage = "https://www.example.com"
     pypi = "toil/toil-5.12.0.tar.gz"
 
-    maintainers("EbiArnie", "thiagogenez")
+    # FIXME: Add a list of GitHub accounts to
+    # notify when the package is updated.
+    # maintainers("github_user1", "github_user2")
 
     version("5.12.0", sha256="fb21c85b8654b0e628087ebd403fa5f53644d86a33a4c1e039ba5769dcaf6654")
-    version("5.11.0", sha256="b5565ab9251f58c06c4ae5617e4484961e6923974d0e1bc4356a61f71ec8ea19")
-    version("5.9.2", sha256="15018c0215448890c4a6ea4e4a122791bab7ab200424831c0a4eacaa57df0120")
 
-    variant("aws", default=False, description="enable AWS support")
+    # FIXME: Only add the python/pip/wheel dependencies if you need specific versions
+    # or need to change the dependency type. Generic python/pip/wheel dependencies are
+    # added implicity by the PythonPackage base class.
+    # depends_on("python@2.X:2.Y,3.Z:", type=("build", "run"))
+    # depends_on("py-pip@X.Y:", type="build")
+    # depends_on("py-wheel@X.Y:", type="build")
 
-    depends_on("py-setuptools", type="build")
-    depends_on("py-dill@0.3.2:0.4", type=("build", "run"))
-    depends_on("py-requests@2:3", type=("build", "run"))
-    depends_on("py-urllib3@1.26.0:2.0.0", type=("build", "run"))
-    depends_on("py-python-dateutil", type=("build", "run"))
-    depends_on("py-psutil@3.0.1:6", type=("build", "run"))
-    depends_on("py-tes@0.4.2:1", type=("build", "run"))
-    depends_on("py-pubsub@4.0.3:", type=("build", "run"))
-    depends_on("py-addict@2.2.1:2.5", type=("build", "run"))
-    depends_on("py-pytz@2012:", type=("build", "run"))
-    depends_on("py-enlighten@1.5.2:2", type=("build", "run"))
-    depends_on("py-typing-extensions@4.6.2:5", type=("build", "run"))
+    # FIXME: Add a build backend, usually defined in pyproject.toml. If no such file
+    # exists, use setuptools.
+    # depends_on("py-setuptools", type="build")
+    # depends_on("py-flit-core", type="build")
+    # depends_on("py-poetry-core", type="build")
 
-    # aws variant
-    depends_on("py-boto@2.48:3", when="+aws", type=("build", "run"))
-    depends_on(
-        "py-boto3-stubs@1.28.3.post2:2+s3+sdb+sts+iam+boto3", when="+aws", type=("build", "run")
-    )
-    depends_on("py-mypy-boto3-iam@1.28.3.post2:2", when="+aws", type=("build", "run"))
-    depends_on("py-moto@4.1.11:5", when="+aws", type=("build", "run"))
+    # FIXME: Add additional dependencies if required.
+    # depends_on("py-foo", type=("build", "run"))
+
+    def global_options(self, spec, prefix):
+        # FIXME: Add options to pass to setup.py
+        # FIXME: If not needed, delete this function
+        options = []
+        return options
+
+    def install_options(self, spec, prefix):
+        # FIXME: Add options to pass to setup.py install
+        # FIXME: If not needed, delete this function
+        options = []
+        return options
