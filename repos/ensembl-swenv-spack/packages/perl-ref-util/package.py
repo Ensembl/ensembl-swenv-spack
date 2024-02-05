@@ -14,7 +14,7 @@ class PerlRefUtil(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("MIT")
+
 
     version("0.204", sha256="415fa73dbacf44f3d5d79c14888cc994562720ab468e6f71f91cd1f769f105e1")
 

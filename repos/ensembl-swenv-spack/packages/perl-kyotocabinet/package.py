@@ -14,7 +14,7 @@ class PerlKyotocabinet(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("GPL-3.0-or-later")
+
 
     version("1.20", sha256="19b3654dc6febfd0b91e54f36b2a0ebdaeaefaf7875f5aab337ad846a4095c32")
 

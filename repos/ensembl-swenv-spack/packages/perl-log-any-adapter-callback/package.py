@@ -16,7 +16,7 @@ class PerlLogAnyAdapterCallback(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
+
 
     # Note: Author marked package as deprecated
     version("0.102", sha256="7c01883265bdab65344257c1b1d1e69fbe300e7693dddeebb98f9f67310e07cd")

@@ -14,7 +14,7 @@ class PerlDatetimeFormatOracle(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
+
 
     version("0.06", sha256="9f18d1eb3dff38e046ba063d6b54cc7d68464640ce69d7d1578a2ccd285ca8d4")
 

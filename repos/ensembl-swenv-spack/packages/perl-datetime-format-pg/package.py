@@ -14,7 +14,7 @@ class PerlDatetimeFormatPg(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
+
 
     version("0.16014", sha256="38bb9666524dc384c3366f6342cb9656c50bac0f9716a3d44f1cf552ccbe0eb9")
 

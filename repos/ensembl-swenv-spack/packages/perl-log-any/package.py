@@ -14,7 +14,7 @@ class PerlLogAny(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
 
     version("1.717", sha256="56649da0f3900230c9e3d29252cb0a74806fb2ddebd22805acd7368959a65bca")
 

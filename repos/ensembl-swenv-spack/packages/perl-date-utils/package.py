@@ -14,7 +14,7 @@ class PerlDateUtils(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("Artistic-2.0")
+
 
     version("0.28", sha256="1ed50713512498e88a54bc7dcf70372763b63196ecf7d9a54668e535d22f03ad")
 

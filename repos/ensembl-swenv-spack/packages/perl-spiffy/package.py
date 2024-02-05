@@ -14,7 +14,7 @@ class PerlSpiffy(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
 
     version("0.46", sha256="8f58620a8420255c49b6c43c5ff5802bd25e4f09240c51e5bf2b022833d41da3")
 

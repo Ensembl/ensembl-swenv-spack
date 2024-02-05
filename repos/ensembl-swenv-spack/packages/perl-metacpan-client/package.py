@@ -14,7 +14,7 @@ class PerlMetacpanClient(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
+
 
     version("2.031000", sha256="c6ceaf886a74120e2bffe2ec1f09d0fdc330acbfdb9ec876ef925ee687ec7cf5")
 

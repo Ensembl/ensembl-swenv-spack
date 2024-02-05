@@ -14,7 +14,7 @@ class PerlSearchElasticsearch(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("Apache-2.0")
+
 
     version("8.00", sha256="4b95357072b7432e02cc9ef897881976650e03030c15ec752789299284ce30ab")
 

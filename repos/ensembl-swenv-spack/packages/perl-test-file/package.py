@@ -14,7 +14,7 @@ class PerlTestFile(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("Artistic-2.0")
+
 
     version("1.993", sha256="ef2ffe1aaec7b42d874ad411ec647547b9b9bc2f5fb93e49e3399488456afc7a")
 

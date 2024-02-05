@@ -14,7 +14,7 @@ class PerlEmailAbstract(PerlPackage):
 
     maintainers("EbiArnie")
 
-    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
+
 
     version("3.010", sha256="8c12f68b5974cafc99d74942abefc8597193035aafd2763128e6aaafca4b7ed6")
 
