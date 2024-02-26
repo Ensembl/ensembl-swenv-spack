@@ -1,0 +1,461 @@
+--- a/ajax/core/ajsql.c	2013-07-15 22:25:31.000000000 +0100
++++ b/ajax/core/ajsql.c	2024-02-13 13:58:34.478988692 +0000
+@@ -109,7 +109,7 @@
+ 
+ /* #varstatic initialisation **************************************************
+ **
+-** #value [AjBool] sqlGInit Private boolean variable to ascertain that
++** #value [AjBool] sqlGInit Private convertStringean variable to ascertain that
+ ** ajSqlInit has been called once and only once.
+ **
+ ******************************************************************************/
+@@ -3014,7 +3014,7 @@
+ ** AJAX Boolean value.
+ **
+ ** This function uses ajStrToBool to convert the AJAX String representing the
+-** column value into an AJAX boolean value. The function converts 'yes' and
++** column value into an AJAX convertStringean value. The function converts 'yes' and
+ ** 'true', as well as 'no' and 'false' into its corresponding AJAX Bool values.
+ ** It also assumes any numeric value as true and 0 as false.
+ **
+@@ -3030,7 +3030,7 @@
+ 
+ AjBool ajSqlcolumnToBool(AjPSqlrow sqlr, AjBool *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3045,14 +3045,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnToStr(sqlr, &str);
++    convertString = ajSqlcolumnToStr(sqlr, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToBool(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3074,7 +3074,7 @@
+ 
+ AjBool ajSqlcolumnToDouble(AjPSqlrow sqlr, double *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3089,14 +3089,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnToStr(sqlr, &str);
++    convertString = ajSqlcolumnToStr(sqlr, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToDouble(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3118,7 +3118,7 @@
+ 
+ AjBool ajSqlcolumnToFloat(AjPSqlrow sqlr, float *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3133,14 +3133,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnToStr(sqlr, &str);
++    convertString = ajSqlcolumnToStr(sqlr, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToFloat(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3162,7 +3162,7 @@
+ 
+ AjBool ajSqlcolumnToInt(AjPSqlrow sqlr, ajint *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3177,14 +3177,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnToStr(sqlr, &str);
++    convertString = ajSqlcolumnToStr(sqlr, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToInt(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3206,7 +3206,7 @@
+ 
+ AjBool ajSqlcolumnToLong(AjPSqlrow sqlr, ajlong *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3221,14 +3221,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnToStr(sqlr, &str);
++    convertString = ajSqlcolumnToStr(sqlr, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToLong(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3300,7 +3300,7 @@
+ 
+ AjBool ajSqlcolumnToTime(AjPSqlrow sqlr, AjPTime *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3318,14 +3318,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnToStr(sqlr, &str);
++    convertString = ajSqlcolumnToStr(sqlr, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajTimeSetS(*Pvalue, str);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3347,7 +3347,7 @@
+ 
+ AjBool ajSqlcolumnToUint(AjPSqlrow sqlr, ajuint *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3362,14 +3362,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnToStr(sqlr, &str);
++    convertString = ajSqlcolumnToStr(sqlr, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToUint(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3391,7 +3391,7 @@
+ 
+ AjBool ajSqlcolumnToUlong(AjPSqlrow sqlr, ajulong *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3406,14 +3406,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnToStr(sqlr, &str);
++    convertString = ajSqlcolumnToStr(sqlr, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToUlong(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3528,7 +3528,7 @@
+ ** AJAX Boolean value.
+ **
+ ** This function uses ajStrToBool to convert the AJAX String representing the
+-** column value into an AJAX boolean value. The function converts 'yes' and
++** column value into an AJAX convertStringean value. The function converts 'yes' and
+ ** 'true', as well as 'no' and 'false' into its corresponding AJAX Bool values.
+ ** It also assumes any numeric value as true and 0 as false.
+ **
+@@ -3546,7 +3546,7 @@
+ AjBool ajSqlcolumnNumberToBool(const AjPSqlrow sqlr, ajuint column,
+                                AjBool *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3561,14 +3561,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnNumberToStr(sqlr, column, &str);
++    convertString = ajSqlcolumnNumberToStr(sqlr, column, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToBool(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3592,7 +3592,7 @@
+ AjBool ajSqlcolumnNumberToDouble(const AjPSqlrow sqlr, ajuint column,
+                                  double *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3607,14 +3607,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnNumberToStr(sqlr, column, &str);
++    convertString = ajSqlcolumnNumberToStr(sqlr, column, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToDouble(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3638,7 +3638,7 @@
+ AjBool ajSqlcolumnNumberToFloat(const AjPSqlrow sqlr, ajuint column,
+                                 float *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3653,14 +3653,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnNumberToStr(sqlr, column, &str);
++    convertString = ajSqlcolumnNumberToStr(sqlr, column, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToFloat(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3684,7 +3684,7 @@
+ AjBool ajSqlcolumnNumberToInt(const AjPSqlrow sqlr, ajuint column,
+                               ajint *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3699,14 +3699,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnNumberToStr(sqlr, column, &str);
++    convertString = ajSqlcolumnNumberToStr(sqlr, column, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToInt(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3730,7 +3730,7 @@
+ AjBool ajSqlcolumnNumberToLong(const AjPSqlrow sqlr, ajuint column,
+                                ajlong *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3745,14 +3745,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnNumberToStr(sqlr, column, &str);
++    convertString = ajSqlcolumnNumberToStr(sqlr, column, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToLong(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3828,7 +3828,7 @@
+ AjBool ajSqlcolumnNumberToTime(const AjPSqlrow sqlr, ajuint column,
+                                AjPTime *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3846,14 +3846,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnNumberToStr(sqlr, column, &str);
++    convertString = ajSqlcolumnNumberToStr(sqlr, column, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajTimeSetS(*Pvalue, str);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3877,7 +3877,7 @@
+ AjBool ajSqlcolumnNumberToUint(const AjPSqlrow sqlr, ajuint column,
+                                ajuint *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3892,14 +3892,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnNumberToStr(sqlr, column, &str);
++    convertString = ajSqlcolumnNumberToStr(sqlr, column, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToUint(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 
+@@ -3923,7 +3923,7 @@
+ AjBool ajSqlcolumnNumberToUlong(const AjPSqlrow sqlr, ajuint column,
+                                 ajulong *Pvalue)
+ {
+-    AjBool bool = ajFalse;
++    AjBool convertString = ajFalse;
+ 
+     AjPStr str = NULL;
+ 
+@@ -3938,14 +3938,14 @@
+ 
+     str = ajStrNew();
+ 
+-    bool = ajSqlcolumnNumberToStr(sqlr, column, &str);
++    convertString = ajSqlcolumnNumberToStr(sqlr, column, &str);
+ 
+-    if(bool)
++    if(convertString)
+         ajStrToUlong(str, Pvalue);
+ 
+     ajStrDel(&str);
+ 
+-    return bool;
++    return convertString;
+ }
+ 
+ 

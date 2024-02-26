@@ -19,7 +19,7 @@ class PerlKyotocabinet(PerlPackage):
     version("1.20", sha256="19b3654dc6febfd0b91e54f36b2a0ebdaeaefaf7875f5aab337ad846a4095c32")
 
     depends_on("kyotocabinet", type=("build", "link", "run", "test"))
-    depends_on("zlib-api", type=("build", "link", "run", "test"))
+    depends_on("zlib", type=("build", "link", "run", "test"))
     depends_on("lzo", type=("build", "link", "run", "test"))
     depends_on("xz", type=("build", "link", "run", "test"))
 
