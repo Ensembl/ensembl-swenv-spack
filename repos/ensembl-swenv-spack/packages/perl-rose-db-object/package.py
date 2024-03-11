@@ -14,7 +14,7 @@ class PerlRoseDbObject(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("Artistic-1.0-Perl OR GPL-1.0-or-later")
 
     version("0.820", sha256="a0077609250966636f1411bcce2493cf1e1166ba935071738eb4b713104da83b")
 

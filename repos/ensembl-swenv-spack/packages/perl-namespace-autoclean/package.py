@@ -14,7 +14,7 @@ class PerlNamespaceAutoclean(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version("0.29", sha256="45ebd8e64a54a86f88d8e01ae55212967c8aa8fed57e814085def7608ac65804")
 

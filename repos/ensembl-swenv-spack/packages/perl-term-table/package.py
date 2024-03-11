@@ -14,7 +14,7 @@ class PerlTermTable(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version("0.018", sha256="9159b9131ee6b3f3956b74f45422985553574babbfaeba60be5c17bc114ac011")
 

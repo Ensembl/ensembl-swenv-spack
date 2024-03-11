@@ -14,6 +14,8 @@ class PerlDatetimeFormatIso8601(PerlPackage):
 
     maintainers("EbiArnie")
 
+# license("Artistic-1.0-Perl OR GPL-1.0-or-later")
+
     version("0.16", sha256="582847f6e029065334a00564f20cd7c28f4e5cd4ec21513d0f692531ed3b56e1")
 
     depends_on("perl-datetime@1.45:", type=("build", "run", "test"))

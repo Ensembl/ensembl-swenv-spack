@@ -14,7 +14,7 @@ class PerlTestWeaken(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version("3.022000", sha256="2631a87121310262e0e96107a6fa0ed69487b7701520773bee5fa9accc295f5b")
 

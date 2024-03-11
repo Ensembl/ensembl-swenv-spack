@@ -14,7 +14,7 @@ class PerlDatetimeFormatMysql(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("Artistic-1.0-Perl OR GPL-1.0-or-later")
 
     version("0.08", sha256="19cb70e98584655e354d2d6a8e71cc5ca902dddc3ac44416712f9163d122b9e8")
 

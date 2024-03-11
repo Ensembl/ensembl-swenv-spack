@@ -14,11 +14,11 @@ class PerlEmailDateFormat(PerlPackage):
 
     maintainers("EbiArnie")
 
-    version("1.008", sha256="432b7c83ff88749af128003f5257c573aec1a463418db90ed22843cbbc258b4f")
-    version("1.007", sha256="5956d953f3e2f8e6f614304df3be30399721b0f0f9a2407fd68b74a68ff62e52")
+# license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
-    depends_on("perl@:5.29.0", when="@:1.007", type=("build", "link", "run", "test"))
-    depends_on("perl@5.29.1:", when="@1.008:", type=("build", "link", "run", "test"))
+    version("1.008", sha256="432b7c83ff88749af128003f5257c573aec1a463418db90ed22843cbbc258b4f")
+
+    depends_on("perl@5.12.0:", type=("build", "link", "run", "test"))
 
     def test_use(self):
         """Test 'use module'"""

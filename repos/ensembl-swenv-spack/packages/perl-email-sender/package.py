@@ -14,7 +14,7 @@ class PerlEmailSender(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("Artistic-1.0-Perl OR GPL-1.0-or-later")
 
     version("2.600", sha256="ecc675d030d79d9a4fb064567ea885c66b17c3862379ad30f8205a281cd8ee29")
 

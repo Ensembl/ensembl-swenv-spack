@@ -14,7 +14,7 @@ class PerlEmailMimeContenttype(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("Artistic-1.0-Perl OR GPL-1.0-or-later")
 
     version("1.028", sha256="e7950246433f7ed6c3e4fd4df2227e0f2341137c3cab1989018fc370f58145c4")
 

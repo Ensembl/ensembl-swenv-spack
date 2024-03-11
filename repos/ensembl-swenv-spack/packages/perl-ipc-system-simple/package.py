@@ -14,7 +14,7 @@ class PerlIpcSystemSimple(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version("1.30", sha256="22e6f5222b505ee513058fdca35ab7a1eab80539b98e5ca4a923a70a8ae9ba9e")
 

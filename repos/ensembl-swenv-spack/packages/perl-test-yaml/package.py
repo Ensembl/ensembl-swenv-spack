@@ -14,7 +14,7 @@ class PerlTestYaml(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("Artistic-1.0-Perl OR GPL-1.0-or-later")
 
     version("1.07", sha256="1f300d034f46298cb92960912cc04bac33fb27f05b8852d8f051e110b9cd995f")
 

@@ -14,7 +14,7 @@ class PerlDatetimeLocale(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version("1.40", sha256="7490b4194b5d23a4e144976dedb3bdbcc6d3364b5d139cc922a86d41fdb87afb")
 

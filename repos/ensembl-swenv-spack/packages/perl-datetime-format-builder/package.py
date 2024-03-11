@@ -14,7 +14,7 @@ class PerlDatetimeFormatBuilder(PerlPackage):
 
     maintainers("EbiArnie")
 
-
+# license("Artistic-2.0")
 
     version("0.83", sha256="61ffb23d85b3ca1786b2da3289e99b57e0625fe0e49db02a6dc0cb62c689e2f2")
 
