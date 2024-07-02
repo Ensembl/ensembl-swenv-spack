@@ -12,7 +12,7 @@ class Exonerate(AutotoolsPackage):
     homepage = "https://www.ebi.ac.uk/about/vertebrate-genomics/software/exonerate"
     url = "https://github.com/sgiorgetti/exonerate.git"
 
-    maintainers("sgiorgetti", "ebi_arnie")
+    maintainers("sgiorgetti", "EbiArnie")
 
     # See https://spdx.org/licenses/ for a list. Upon manually verifying
     # license("GPL-3.0-only", checked_by="sgiorgetti")
