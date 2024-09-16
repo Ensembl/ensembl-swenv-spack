@@ -30,7 +30,7 @@ class PerlDbixClass(PerlPackage):
     depends_on("perl-devel-globaldestruction@0.09:", type=("build", "run", "test"))
     depends_on("perl-hash-merge@0.12:", type=("build", "run", "test"))
     depends_on("perl-module-find@0.07:", type=("build", "run", "test"))
-    depends_on("perl-moo@2.000:", type=("build", "run", "test"))
+    depends_on("perl-moo@2:", type=("build", "run", "test"))
     depends_on("perl-mro-compat@0.12:", type=("build", "run", "test"))
     depends_on("perl-namespace-clean@0.24:", type=("build", "run", "test"))
     depends_on("perl-package-stash@0.28:", type=("build", "link"))

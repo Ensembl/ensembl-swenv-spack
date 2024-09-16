@@ -20,6 +20,7 @@ class PerlUriFind(PerlPackage):
 
     depends_on("perl@5.8.8:", type=("build", "link", "run", "test"))
     depends_on("perl-uri@1.60:", type=("build", "run", "test"))
+    depends_on("perl-module-build", type=("build", "test"))
 
     def test_use(self):
         """Test 'use module'"""

@@ -19,7 +19,7 @@ class PerlDateException(PerlPackage):
     version("0.08", sha256="329327e1071123b9b50f31e54202c1f48b866a538cb93aeab193e92eb0c847f8")
 
     depends_on("perl@5.6.0:", type=("build", "link", "run", "test"))
-    depends_on("perl-moo@2.000000:", type=("build", "run", "test"))
+    depends_on("perl-moo@2:", type=("build", "run", "test"))
     depends_on("perl-namespace-autoclean@0.28:", type=("build", "run", "test"))
     depends_on("perl-throwable@0.200011:", type=("build", "run", "test"))
 

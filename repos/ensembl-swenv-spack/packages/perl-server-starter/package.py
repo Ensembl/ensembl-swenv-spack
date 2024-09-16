@@ -22,6 +22,7 @@ class PerlServerStarter(PerlPackage):
     depends_on("perl-test-requires", type=("build", "test"))
     depends_on("perl-test-sharedfork", type=("build", "test"))
     depends_on("perl-test-tcp@2.08:", type=("build", "test"))
+    depends_on("perl-module-build", type=("build", "test"))
 
     def test_use(self):
         """Test 'use module'"""

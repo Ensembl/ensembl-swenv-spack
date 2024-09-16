@@ -24,7 +24,7 @@ class PerlEmailSender(PerlPackage):
     depends_on("perl-email-address-xs", type=("build", "run", "test"))
     depends_on("perl-email-simple@1.998:", type=("build", "run", "test"))
     depends_on("perl-module-runtime", type=("build", "run", "test"))
-    depends_on("perl-moo@2.000000:", type=("build", "run", "test"))
+    depends_on("perl-moo@2:", type=("build", "run", "test"))
     depends_on("perl-moox-types-mooselike@0.15:", type=("build", "run", "test"))
     depends_on("perl-sub-exporter", type=("build", "run", "test"))
     depends_on("perl-throwable", type=("build", "run", "test"))

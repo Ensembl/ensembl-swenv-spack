@@ -21,6 +21,7 @@ class PerlExporterAuto(PerlPackage):
     depends_on("perl@5.8.5:", type=("build", "link", "run", "test"))
     depends_on("perl-b-hooks-endofscope", type=("build", "run", "test"))
     depends_on("perl-sub-identify", type=("build", "run", "test"))
+    depends_on("perl-module-build", type=("build", "run", "test"))
 
     def test_use(self):
         """Test 'use module'"""

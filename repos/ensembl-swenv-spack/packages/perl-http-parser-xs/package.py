@@ -18,6 +18,8 @@ class PerlHttpParserXs(PerlPackage):
 
     version("0.17", sha256="794e6833e326b10d24369f9cdbfc1667105ef6591e8f41e561a3d41a7027a809")
 
+    depends_on("perl-module-install", type=("build", "test"))
+
     def test_use(self):
         """Test 'use module'"""
         options = ["-we", 'use strict; use HTTP::Parser::XS; print("OK\n")']

@@ -19,6 +19,7 @@ class PerlModuleUtil(PerlPackage):
     version("1.09", sha256="6cfbcb6a45064446ec8aa0ee1a7dddc420b54469303344187aef84d2c7f3e2c6")
 
     depends_on("perl@5.5.3:", type=("build", "link", "run", "test"))
+    depends_on("perl-module-build", type=("build", "test"))
 
     def test_use(self):
         """Test 'use module'"""

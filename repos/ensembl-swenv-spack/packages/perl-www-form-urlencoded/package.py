@@ -19,6 +19,7 @@ class PerlWwwFormUrlencoded(PerlPackage):
     version("0.26", sha256="c0480b5f1f15b71163ec327b8e7842298f0cb3ace97e63d7034af1e94a2d90f4")
 
     depends_on("perl@5.8.1:", type=("build", "link", "run", "test"))
+    depends_on("perl-module-build", type=("build", "test"))
 
     def test_use(self):
         """Test 'use module'"""

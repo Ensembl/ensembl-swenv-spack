@@ -106,7 +106,7 @@ class PerlBioperl(PerlPackage):
         depends_on("perl-module-build", type=("build", "run"))
         depends_on("perl-scalar-list-utils", type=("build", "run"))
         depends_on("perl-set-scalar", type=("build", "run"))
-#        depends_on("perl-sort-naturally", type=("build", "run"))
+        depends_on("perl-sort-naturally", type=("build", "run"))
         depends_on("perl-test-harness", type=("build", "run"))
         depends_on("perl-test-most", type=("build", "run"))
         depends_on("perl-test-requiresinternet", type=("build", "run"))
@@ -120,76 +120,24 @@ class PerlBioperl(PerlPackage):
         depends_on("perl-xml-twig", type=("build", "run"))
         depends_on("perl-xml-writer", type=("build", "run"))
         depends_on("perl-yaml", type=("build", "run"))
-#        depends_on("perl-algorithm-munkres", type=("build", "run"))
-#        depends_on("perl-array-compare", type=("build", "run"))
-#        depends_on("perl-bio-phylo", type=("build", "run"))
-#        depends_on("perl-convert-binary-c", type=("build", "run"))
-#        depends_on("perl-gd", type=("build", "run"))
-#        depends_on("perl-graph", type=("build", "run"))
-#        depends_on("perl-graphviz", type=("build", "run"))
-#        depends_on("perl-html-entities", type=("build", "run"))
-#        depends_on("perl-html-headparser", type=("build", "run"))
-#        depends_on("perl-html-tableextract", type=("build", "run"))
-#        depends_on("perl-svg", type=("build", "run"))
-#        depends_on("perl-svg-graph", type=("build", "run"))
-#        depends_on("perl-xml-parser", type=("build", "run"))
-#        depends_on("perl-xml-sax-writer", type=("build", "run"))
-#        depends_on("perl-xml-simple", type=("build", "run"))
+        depends_on("perl-algorithm-munkres", type=("build", "run"))
+        depends_on("perl-array-compare", type=("build", "run"))
+        depends_on("perl-bio-phylo", type=("build", "run"))
+        depends_on("perl-convert-binary-c", type=("build", "run"))
+        depends_on("perl-gd", type=("build", "run"))
+        depends_on("perl-graph", type=("build", "run"))
+        depends_on("perl-graphviz", type=("build", "run"))
+        depends_on("perl-html-entities", type=("build", "run"))
+        depends_on("perl-html-headparser", type=("build", "run"))
+        depends_on("perl-html-tableextract", type=("build", "run"))
+        depends_on("perl-svg", type=("build", "run"))
+        depends_on("perl-svg-graph", type=("build", "run"))
+        depends_on("perl-xml-parser", type=("build", "run"))
+        depends_on("perl-xml-sax-writer", type=("build", "run"))
+        depends_on("perl-xml-simple", type=("build", "run"))
 
-
-#    @when("@:1.7.3")
-#    def configure_args(self, spec, prefix):
-#        # Overriding default configure method in order to cater to interactive
-#        # Build.pl
-#
-#        self.build_method = "Build.PL"
-#        self.build_executable = Executable(os.path.join(self.stage.source_path, "Build"))
-#
-#        # Config questions consist of:
-#        #    Do you want to run the Bio::DB::GFF or Bio::DB::SeqFeature::Store
-#        #        live database tests? y/n [n]
-#        #
-#        #    Install [a]ll BioPerl scripts, [n]one, or choose groups
-#        #        [i]nteractively? [a]
-#        #
-#        #    Do you want to run tests that require connection to servers across
-#        #        the internet (likely to cause some failures)? y/n [n]
-#        #
-#        # Eventually, someone can add capability for the other options, but
-#        # the current answers are the most practical for a spack install.
-#
-#        config_answers = ["n\n", "a\n", "n\n"]
-#        config_answers_filename = "spack-config.in"
-#
-#        with open(config_answers_filename, "w") as f:
-#            f.writelines(config_answers)
-#
-#        with open(config_answers_filename, "r") as f:
-#            inspect.getmodule(self).perl("Build.PL", "--install_base=%s" % self.prefix, input=f)
 
     def configure_args(self):
         args = ['--accept=1']
 
         return args
-
-
-# TODO
-# algorithm-munkres
-# array-compare
-# bio-phylo
-# convert-binary-c
-# extutils-manifest
-# graphviz
-# html-entities
-# html-headparser
-# html-tableextract
-# http-request-common
-# io-scalar
-# lwp-useragent
-# scalar-util
-# sort-naturally
-# svg-graph
-# test-harness
-# uri-escape
-# xml-parser-perlsax
-# 

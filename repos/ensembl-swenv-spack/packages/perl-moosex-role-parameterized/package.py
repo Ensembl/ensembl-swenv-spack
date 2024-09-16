@@ -20,7 +20,7 @@ class PerlMoosexRoleParameterized(PerlPackage):
 
     depends_on("perl@5.8.1:", type=("build", "link", "run", "test"))
     depends_on("perl-cpan-meta-check@0.011:", type=("build", "test"))
-    depends_on("perl-module-build-tiny@0.034:", type=("build"))
+    depends_on("perl-module-build-tiny@0.034:", type=("build", "run", "test"))
     depends_on("perl-module-runtime", type=("build", "run", "test"))
     depends_on("perl-moose@2.0300:", type=("build", "run", "test"))
     depends_on("perl-namespace-autoclean", type=("build", "run", "test"))

@@ -17,7 +17,7 @@ class Exonerate(AutotoolsPackage):
     # See https://spdx.org/licenses/ for a list. Upon manually verifying
     # license("GPL-3.0-only", checked_by="sgiorgetti")
 
-    version("2.4.1", git='https://github.com/sgiorgetti/exonerate.git', commit='eb05b8b')
+    version("2.4.1", git='https://github.com/sgiorgetti/exonerate.git', commit='22beeb0')
     version("2.4.0", sha256="f849261dc7c97ef1f15f222e955b0d3daf994ec13c9db7766f1ac7e77baa4042")
     version("2.2.0", sha256="0ea2720b1388fa329f889522f43029b416ae311f57b229129a65e779616fe5ff")
 
